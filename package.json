@@ -1,0 +1,10 @@
+{
+  "name"         : "angular-react-isomorphic-poc",
+  "version"      : "0.0.1",
+  "description"  : "Exploring possibilities of loading isomorphic React views inside of Angular apps",
+  "main"         : "server.js",
+  "author"       : "davidchang",
+  "dependencies" : {
+    "express" : "latest"
+  }
+}

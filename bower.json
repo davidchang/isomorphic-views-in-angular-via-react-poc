@@ -1,0 +1,8 @@
+{
+  "name": "angular-react-isomorphic-poc",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.2.18",
+    "ng-grid": "~2.0.11"
+  }
+}
