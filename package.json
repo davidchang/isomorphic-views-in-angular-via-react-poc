@@ -5,6 +5,5 @@
   "main"         : "server.js",
   "author"       : "davidchang",
   "dependencies" : {
-    "express" : "latest"
   }
 }
