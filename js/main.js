@@ -1,9 +1,8 @@
-var app = angular.module('myApp', ['ngGrid'])
+var app = angular.module('myApp', ['ngReactGrid'])
 
   .controller('MainCtrl', function($scope, KDStatsService) {
-    $scope.gridData = KDStatsService.getStats();
-    $scope.gridOptions = {
-      data: 'gridData',
+    $scope.grid = {
+      data: KDStatsService.getStats(),
       columnDefs: [
         {field:'date', displayName:'Date'},
         {field:'opponent', displayName:'Opponent'},
@@ -23,7 +22,9 @@ var app = angular.module('myApp', ['ngGrid'])
         {field:'pf', displayName:'Fouls'},
         {field:'to', displayName:'Turnovers'},
         {field:'pts', displayName:'Points'},
-      ]
+      ],
+      pageSize : 1000,
+      pageSizes : [1000]
     };
   })
 

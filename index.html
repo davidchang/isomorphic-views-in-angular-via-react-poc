@@ -1,18 +1,18 @@
 <html ng-app="myApp">
   <head lang="en">
     <meta charset="utf-8">
-    <title>Iteration 0: Pure Angular</title>
-    <link rel="stylesheet" type="text/css" href="bower_components/ng-grid/ng-grid.min.css" />
+    <title>Iteration 1: ngReactGrid</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/ngReactGrid/build/css/ngReactGrid-0.5.0.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <section ng-controller="MainCtrl">
-      <div class="gridStyle" ng-grid="gridOptions"></div>
+      <ng-react-grid grid="grid"></ng-react-grid>
     </section>
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/ng-grid/ng-grid-2.0.11.debug.js"></script>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/ngReactGrid/build/js/ngReactGrid-0.5.0.js"></script>
 
     <script src="js/stats.js"></script>
     <script src="js/main.js"></script>

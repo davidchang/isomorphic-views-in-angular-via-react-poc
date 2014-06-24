@@ -1,3 +1,9 @@
 .gridStyle {
+  width: 100%;
   min-height: 100%;
+}
+
+.ngReactGridViewPort {
+  min-height: 85% !important;
+  max-height: auto !important;
 }
