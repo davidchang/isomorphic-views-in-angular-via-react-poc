@@ -1,6 +1,6 @@
 var app = angular.module('myApp', ['ngReactGrid'])
 
-  .controller('MainCtrl', function($scope, KDStatsService) {
+  .controller('MainCtrl', function($scope, KDStatsService, ngReactGrid) {
     $scope.grid = {
       data: KDStatsService.getStats(),
       columnDefs: [
@@ -26,6 +26,8 @@ var app = angular.module('myApp', ['ngReactGrid'])
       pageSize : 1000,
       pageSizes : [1000]
     };
+
+    new ngReactGrid($scope, angular.element(document.getElementById('gridContainer')));
   })
 
   .service('KDStatsService', function() {
