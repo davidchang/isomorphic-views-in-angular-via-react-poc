@@ -1,3 +1,6 @@
 ## TO RUN
 
-bower install && python -m SimpleHTTPServer
+bower install
+npm install
+node server
+go to localhost:8081

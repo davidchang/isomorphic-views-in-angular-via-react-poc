@@ -12800,3 +12800,7 @@ var stats = [
     "pts": "21"
   }
 ];
+
+if (typeof module != 'undefined' && module.exports) {
+    module.exports = stats;
+}
