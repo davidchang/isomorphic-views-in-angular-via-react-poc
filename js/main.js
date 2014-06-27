@@ -26,15 +26,11 @@ var app = angular.module('myApp', ['ngRoute', 'ngReactGrid'])
     grid.react.endIndex = 1000;
     grid.totalPages = 1;
 
-    console.log('grid', grid);
-
     var viewMarkup = React.renderComponentToString(
       ngReactGridComponent({ grid : grid })
     );
 
     viewMarkup = '<div id="gridContainer">' + viewMarkup + '</div>';
-
-    console.log('viewMarkup', viewMarkup);
 
     $templateCache.put('views/mainTemplate.html', viewMarkup);
   })
