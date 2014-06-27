@@ -1,6 +1,6 @@
 // Generate the Isomorphic view
 var React = require('react');
-var ngReactGrid = require('./js/ngReactGrid-server-compatible-0.5.0');
+var ngReactGrid = require('./js/ngReactGrid-server-compatible-0.6.0');
 var stats = require('./js/stats');
 var columnDefs = require('./js/columnDefs');
 
