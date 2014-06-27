@@ -1,6 +1,21 @@
-var app = angular.module('myApp', ['ngReactGrid'])
+var app = angular.module('myApp', ['ngRoute', 'ngReactGrid'])
 
-  .controller('MainCtrl', function($scope, KDStatsService) {
+  .config(function($routeProvider) {
+    $routeProvider.
+      when('/', {
+        templateUrl: 'views/home.html'
+      }).
+      when('/main', {
+        templateUrl: 'views/mainTemplate.html',
+        controller: 'MainCtrl'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+  })
+
+  .controller('MainCtrl', function($scope, $location, KDStatsService) {
+
     $scope.grid = {
       data: KDStatsService.getStats(),
       columnDefs: [
