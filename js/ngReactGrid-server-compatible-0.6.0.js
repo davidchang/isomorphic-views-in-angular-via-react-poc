@@ -379,6 +379,8 @@ var _ = {
             module.exports = {};
         }
         module.exports.gridDefault = grid;
+    } else if (typeof window != 'undefined') {
+        window.ngReactGridDefaults = grid;
     }
 
 })();
