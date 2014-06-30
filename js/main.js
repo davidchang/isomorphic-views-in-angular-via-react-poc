@@ -1,32 +1,67 @@
 var app = angular.module('myApp', ['ngRoute', 'ngReactGrid'])
+
   .config(function($routeProvider) {
     $routeProvider.
       when('/', {
         templateUrl: 'views/home.html'
       }).
-      when('/main', {
-        templateUrl: 'views/mainTemplate.html',
-        controller: 'MainCtrl'
+      when('/small', {
+        templateUrl: 'views/smallTemplate.html',
+        controller: 'SmallDataCtrl'
+      }).
+      when('/large', {
+        templateUrl: 'views/largeTemplate.html',
+        controller: 'LargeDataCtrl'
       }).
       otherwise({
         redirectTo: '/'
       });
   })
 
-  .controller('MainCtrl', function($scope, KDStatsService, ngReactGrid) {
+  .controller('SmallDataCtrl', function($scope, KDStatsService, ngReactGrid) {
+
     $scope.grid = {
-      data       : KDStatsService.getStats(),
-      columnDefs : columnDefs,
-      pageSize   : 1000,
-      pageSizes  : [1000]
+      data: KDStatsService.getSmallStats(),
+      columnDefs: columnDefs,
+      pageSize : 1000,
+      pageSizes : [1000]
     };
+
+    $scope.$on('destroy', function() {
+      angular.element(document.getElementById('gridContainer')).empty();
+    });
+
+    new ngReactGrid($scope, angular.element(document.getElementById('gridContainer')));
+  })
+
+  .controller('LargeDataCtrl', function($scope, KDStatsService, ngReactGrid) {
+
+    $scope.grid = {
+      data: KDStatsService.getLargeStats(),
+      columnDefs: columnDefs,
+      pageSize : 1000,
+      pageSizes : [1000]
+    };
+
+    $scope.$on('destroy', function() {
+      angular.element(document.getElementById('gridContainer')).empty();
+    });
 
     new ngReactGrid($scope, angular.element(document.getElementById('gridContainer')));
   })
 
   .service('KDStatsService', function() {
     return {
-      getStats : function() {
+      getSmallStats : function() {
+        var toReturn = [];
+        stats.forEach(function(stat) {
+          if (stat.date.split('/')[2] == '2014') {
+            toReturn.push(stat);
+          }
+        });
+        return toReturn;
+      },
+      getLargeStats : function() {
         return stats;
       }
     };
