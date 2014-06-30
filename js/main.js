@@ -5,18 +5,32 @@ var app = angular.module('myApp', ['ngRoute', 'ngGrid'])
       when('/', {
         templateUrl: 'views/home.html'
       }).
-      when('/main', {
+      when('/small', {
         templateUrl: 'views/mainTemplate.html',
-        controller: 'MainCtrl'
+        controller: 'SmallDataCtrl'
+      }).
+      when('/large', {
+        templateUrl: 'views/mainTemplate.html',
+        controller: 'LargeDataCtrl'
       }).
       otherwise({
         redirectTo: '/'
       });
   })
 
-  .controller('MainCtrl', function($scope, $location, KDStatsService) {
+  .controller('SmallDataCtrl', function($scope, KDStatsService) {
 
-    $scope.gridData = KDStatsService.getStats($location.hash());
+    $scope.gridData = KDStatsService.getSmallStats();
+
+    $scope.gridOptions = {
+      data: 'gridData',
+      columnDefs: columnDefs
+    };
+  })
+
+  .controller('LargeDataCtrl', function($scope, KDStatsService) {
+
+    $scope.gridData = KDStatsService.getLargeStats();
 
     $scope.gridOptions = {
       data: 'gridData',
@@ -26,7 +40,16 @@ var app = angular.module('myApp', ['ngRoute', 'ngGrid'])
 
   .service('KDStatsService', function() {
     return {
-      getStats : function() {
+      getSmallStats : function() {
+        var toReturn = [];
+        stats.forEach(function(stat) {
+          if (stat.date.split('/')[2] == '2014') {
+            toReturn.push(stat);
+          }
+        });
+        return toReturn;
+      },
+      getLargeStats : function() {
         return stats;
       }
     };
